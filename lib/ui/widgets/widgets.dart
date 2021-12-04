@@ -1,0 +1,1 @@
+export 'animaflix.dart';
