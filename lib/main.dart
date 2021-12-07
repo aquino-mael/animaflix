@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,6 @@ void main() {
         Animaflix(),
       );
   }, (error, stackTrace) {
-
+    log(stackTrace.toString(), error: error, name: "APP ERROR");
   });
 }
