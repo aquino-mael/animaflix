@@ -14,7 +14,14 @@ class Animaflix extends StatelessWidget {
       initialRoute: SplashScreen.routeName,
       theme: ThemeData(
         primaryColor: AppColors.primaryColor,
-        scaffoldBackgroundColor: AppColors.backgroundColor,
+        brightness: Brightness.light,
+        appBarTheme: AppBarTheme(
+          brightness: Brightness.dark
+        )
+      ),
+      darkTheme: ThemeData(
+        primaryColor: AppColors.primaryColor,
+        brightness: Brightness.dark,
       ),
       getPages: [
         GetPage(
