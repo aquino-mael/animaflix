@@ -29,6 +29,11 @@ class Animaflix extends StatelessWidget {
           page: () => SplashScreen(),
           binding: SplashBinding()
         ),
+        GetPage(
+          name: HomeScreen.routeName,
+          page: () => HomeScreen(),
+          binding: HomeBinding(),
+        ),
       ],
     );
   }
