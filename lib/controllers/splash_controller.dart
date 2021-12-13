@@ -1,5 +1,10 @@
 import 'package:get/get.dart';
 
-class SplashController extends GetxController {
-  void navigateToHome() { }
+import '../ui/screens/screens.dart';
+
+class SplashController extends GetxController implements ISplashController {
+  @override
+  void navigateToHome() {
+    Get.offAllNamed<void>(HomeScreen.routeName);
+  }
 }
