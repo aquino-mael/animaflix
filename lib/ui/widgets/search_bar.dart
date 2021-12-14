@@ -21,6 +21,9 @@ class SearchBar extends StatelessWidget {
       borderRadius: BorderRadius.circular(kBorderRadius),
       child: TextFormField(
         onChanged: onChanged,
+        style: TextStyle(
+          color: Colors.white
+        ),
         decoration: InputDecoration(
           hintText: "Pesquise seu anime...",
           hintStyle: TextStyle(
