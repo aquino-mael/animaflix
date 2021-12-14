@@ -11,6 +11,7 @@ class Animaflix extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: 'AnimaFlix',
       initialRoute: SplashScreen.routeName,
       theme: ThemeData(
         primaryColor: AppColors.primaryColor,
