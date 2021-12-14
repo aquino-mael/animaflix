@@ -12,6 +12,10 @@ class HomeController extends GetxController implements IHomeController {
   });
 
   RxList<Anime> animes = <Anime>[].obs;
+  final _filter = ''.obs;
+
+  String get filter => _filter.value;
+  set filter(String value) => _filter.value = value;
 
   @override
   void onInit() async {
