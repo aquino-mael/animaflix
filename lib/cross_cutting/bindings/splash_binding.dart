@@ -1,5 +1,6 @@
-import 'package:animaflix/controllers/controllers.dart';
 import 'package:get/get.dart';
+
+import '../../controllers/controllers.dart';
 
 class SplashBinding implements Bindings {
   @override
