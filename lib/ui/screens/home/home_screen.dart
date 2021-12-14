@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../app/app.dart';
+import '../../../controllers/controllers.dart';
+import '../../../domain/entities/entities.dart';
 import '../../mixins/mixins.dart';
 import '../../widgets/widgets.dart';
 
-class HomeScreen extends GetView with StatusBarManager {
+class HomeScreen extends GetView<HomeController> with StatusBarManager {
   static const String routeName = "/home";
 
   @override
@@ -57,6 +59,7 @@ class HomeScreen extends GetView with StatusBarManager {
               ),
             ),
           ),
+          
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             sliver: SliverGrid.count(
@@ -65,22 +68,20 @@ class HomeScreen extends GetView with StatusBarManager {
                 : 3,
               crossAxisSpacing: 16.0,
               mainAxisSpacing: 16.0,
-              children: [
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-                AnimeBanner(name: "One Piece", urlImage: 'https://wallpaperaccess.com/full/10817.jpg'),
-              ],
+              children: controller.animes.map<Widget>(_buildAnimeBanner).toList(),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildAnimeBanner(Anime anime) {
+    return AnimeBanner(
+      animeName: anime.name,
+      animeYear: anime.year,
+      animeRate: anime.note,
+      animeUrlImageBanner: anime.banner,
     );
   }
 }
