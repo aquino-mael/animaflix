@@ -42,7 +42,11 @@ class HomeScreen extends GetView<HomeController> with StatusBarManager {
                     right: 16.0,
                     left: 16.0,
                     bottom: 16.0,
-                    child: SearchBar(),
+                    child: SearchBar(
+                      onChanged: (value) {
+                        controller.filter = value;
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -62,14 +66,16 @@ class HomeScreen extends GetView<HomeController> with StatusBarManager {
           
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            sliver: SliverGrid.count(
+            sliver: Obx(() => SliverGrid.count(
               crossAxisCount: MediaQuery.of(context).orientation == Orientation.portrait
                 ? 2
                 : 3,
               crossAxisSpacing: 16.0,
               mainAxisSpacing: 16.0,
-              children: controller.animes.map<Widget>(_buildAnimeBanner).toList(),
-            ),
+              children: controller.animes.where((anime) => anime.name.toLowerCase().contains(controller.filter.toLowerCase()))
+                                         .map<Widget>(_buildAnimeBanner)
+                                         .toList(),
+            )),
           ),
         ],
       ),
