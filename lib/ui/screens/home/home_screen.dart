@@ -21,8 +21,8 @@ class HomeScreen extends GetView with StatusBarManager {
             title: Text(
               "AnimaFlix"
             ),
-            centerTitle: true,
-            expandedHeight: 200,
+            centerTitle: false,
+            expandedHeight: 150,
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
                 fit: StackFit.expand,
@@ -35,6 +35,12 @@ class HomeScreen extends GetView with StatusBarManager {
                     decoration: BoxDecoration(
                       color: Colors.black54
                     ),
+                  ),
+                  Positioned(
+                    right: 16.0,
+                    left: 16.0,
+                    bottom: 16.0,
+                    child: SearchBar(),
                   ),
                 ],
               ),
