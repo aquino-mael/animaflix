@@ -63,7 +63,7 @@ class AnimeBanner extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      "2021",
+                      "$animeYear",
                     ),
                   ),
                   Row(
@@ -77,7 +77,7 @@ class AnimeBanner extends StatelessWidget {
                         width: 8.0,
                       ),
                       Text(
-                        "7.2",
+                        "$animeRate",
                       ),
                     ],
                   ),
