@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AnimeBanner extends StatelessWidget {
-  final String name;
-  final String urlImage;
+  final String animeName;
+  final int animeYear;
+  final double animeRate;
+  final String animeUrlImageBanner;
 
   const AnimeBanner({
     Key? key,
-    required this.name,
-    required this.urlImage,
+    required this.animeName,
+    required this.animeYear,
+    required this.animeRate,
+    required this.animeUrlImageBanner,
   }) : super(key: key);
 
   @override
@@ -24,7 +28,7 @@ class AnimeBanner extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    urlImage,
+                    animeUrlImageBanner,
                   ),
                 ),
                 border: Border.all(
@@ -42,7 +46,16 @@ class AnimeBanner extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                name,
+                animeName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14.5
+                ),
+              ),
+              SizedBox(
+                height: 4.0,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,6 +70,7 @@ class AnimeBanner extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.star,
+                        size: 14,
                         color: Colors.yellow,
                       ),
                       SizedBox(
