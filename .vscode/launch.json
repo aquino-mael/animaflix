@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "name": "Flutter Run Tests",
+      "type": "dart",
+      "request": "launch",
+      "program": "./test/"
+    },
+    {
+      "name": "Flutter Debug",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "showMemoryUsage": true
+    }
+  ]
+}
