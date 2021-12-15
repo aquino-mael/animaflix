@@ -84,6 +84,7 @@ class HomeScreen extends GetView<HomeController> with StatusBarManager {
 
   Widget _buildAnimeBanner(Anime anime) {
     return AnimeBanner(
+      animeId: anime.id,
       animeName: anime.name,
       animeYear: anime.year,
       animeRate: anime.note,
