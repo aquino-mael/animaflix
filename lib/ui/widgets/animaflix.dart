@@ -17,8 +17,8 @@ class Animaflix extends StatelessWidget {
         primaryColor: AppColors.primaryColor,
         brightness: Brightness.light,
         appBarTheme: AppBarTheme(
-          brightness: Brightness.dark
-        )
+          brightness: Brightness.dark,
+        ),
       ),
       darkTheme: ThemeData(
         primaryColor: AppColors.primaryColor,
@@ -34,6 +34,11 @@ class Animaflix extends StatelessWidget {
           name: HomeScreen.routeName,
           page: () => HomeScreen(),
           binding: HomeBinding(),
+        ),
+        GetPage(
+          name: DetailsScreen.routeName,
+          page: () => DetailsScreen(),
+          binding: DetailsBinding(),
         ),
       ],
     );
