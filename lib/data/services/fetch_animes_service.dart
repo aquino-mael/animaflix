@@ -21,8 +21,12 @@ class FetchAnimesService implements IFetchAnimesService {
   }
 
   @override
-  Future<Anime> fetchAnimeDetails(String animeId) {
-    // TODO: implement fetchAnimeDetails
-    throw UnimplementedError();
+  Future<Anime> fetchAnimeDetails(String animeId) async {
+    final response = await httpClient.request(
+      url: 'https://api-animaflix.herokuapp.com/animes/$animeId',
+      method: HttpMethod.GET,
+    );
+
+    return AnimeModel.fromJson(response).toEntity();
   }
 }
