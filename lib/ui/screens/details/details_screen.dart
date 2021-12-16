@@ -33,7 +33,7 @@ class DetailsScreen extends GetView<DetailsController> {
             slivers: [
               SliverPersistentHeader(
                 pinned: true,
-                delegate: CustomDetailsPersistentHeaderDelegate(
+                delegate: DetailsPersistentHeaderDelegate(
                   animeBanner: controller.anime!.banner,
                   animeName: controller.anime!.name,
                   animeYear: controller.anime!.year,
@@ -49,6 +49,7 @@ class DetailsScreen extends GetView<DetailsController> {
                     children: [
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
+                        physics: BouncingScrollPhysics(),
                         child: Wrap(
                           spacing: 4.0,
                           children: controller.anime!.genres.map<Chip>(_buildChipGenres).toList(),
@@ -121,13 +122,13 @@ class DetailsScreen extends GetView<DetailsController> {
   }
 }
 
-class CustomDetailsPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
+class DetailsPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   final String animeBanner;
   final String animeName;
   final int animeYear;
   final Size size;
 
-  CustomDetailsPersistentHeaderDelegate({
+  DetailsPersistentHeaderDelegate({
     required this.size,
     required this.animeBanner,
     required this.animeName,
