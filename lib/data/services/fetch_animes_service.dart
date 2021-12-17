@@ -17,7 +17,9 @@ class FetchAnimesService implements IFetchAnimesService {
       method: HttpMethod.GET,
     );
 
-    return response['results'].map<Anime>((result) => AnimeModel.fromJson(result).toEntity()).toList();
+    return response['results']
+           .map<Anime>((result) => AnimeModel.fromJson(result).toEntity())
+           .toList();
   }
 
   @override
