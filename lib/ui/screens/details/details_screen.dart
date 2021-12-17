@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../app/app.dart';
 import '../../../controllers/controllers.dart';
+import '../../../domain/entities/entities.dart';
 
 class DetailsScreen extends GetView<DetailsController> {
   static const String routeName = '/details';
@@ -74,6 +75,13 @@ class DetailsScreen extends GetView<DetailsController> {
                         title: "Descrição",
                         info: controller.anime!.description!
                       ),
+                      SizedBox(
+                        height: 16.0,
+                      ),
+                      ...List.generate(controller.anime!.seasons!.length, (index) => _buildSeasonsList(
+                        season: controller.anime!.seasons![index],
+                        initiallyExpanded: index == 0,
+                      )),
                     ],
                   ),
                 ),
@@ -95,7 +103,7 @@ class DetailsScreen extends GetView<DetailsController> {
     );
   }
 
-  _buildInformation({
+  Widget _buildInformation({
     required String title,
     required String info,
   }) {
@@ -118,6 +126,63 @@ class DetailsScreen extends GetView<DetailsController> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildSeasonsList({
+    required SeasonEntity season,
+    required bool initiallyExpanded,
+  }) {
+    return Builder(
+      builder: (context) => ExpansionTile(
+        tilePadding: const EdgeInsets.all(.0),
+        childrenPadding: const EdgeInsets.all(.0),
+        initiallyExpanded: initiallyExpanded,
+        title: Row(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor,
+                borderRadius: BorderRadius.horizontal(
+                  left: Radius.circular(4.0)
+                )
+              ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24.0,
+                vertical: 16.0
+              ),
+              child: Text(
+                '${season.seasonNumber}',
+                style: Theme.of(context).textTheme.headline6!.copyWith(
+                  color: Colors.white
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 8.0,
+            ),
+            Text(
+              'Temporada',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+          ],
+        ),
+        children: season.episodes.map<Widget>(_buildEpisodePreview).toList(),
+      ),
+    );
+  }
+
+  Widget _buildEpisodePreview(EpisodeEntity episody) {
+    return ListTile(
+      leading: Image.network(
+        episody.previewUrl,
+      ),
+      title: Text(
+        'Episódio ${episody.number}',
+      ),
+      subtitle: Text(
+        episody.date,
+      ),
     );
   }
 }
