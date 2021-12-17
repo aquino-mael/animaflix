@@ -135,6 +135,7 @@ class DetailsScreen extends GetView<DetailsController> {
   }) {
     return Builder(
       builder: (context) => ExpansionTile(
+        maintainState: true,
         tilePadding: const EdgeInsets.all(.0),
         childrenPadding: const EdgeInsets.all(.0),
         initiallyExpanded: initiallyExpanded,
@@ -174,8 +175,25 @@ class DetailsScreen extends GetView<DetailsController> {
 
   Widget _buildEpisodePreview(EpisodeEntity episody) {
     return ListTile(
-      leading: Image.network(
-        episody.previewUrl,
+      onTap: () async {},
+      leading: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.network(
+            episody.previewUrl,
+          ),
+          if(episody.players != null)
+            Container(
+              padding: const EdgeInsets.all(2.0),
+              decoration: BoxDecoration(
+                color: AppColors.primaryColor,
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.play_arrow_rounded,
+              ),
+            ),
+        ],
       ),
       title: Text(
         'Episódio ${episody.number}',
