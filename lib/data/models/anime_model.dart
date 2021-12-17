@@ -1,10 +1,12 @@
 import '../../domain/entities/entities.dart';
+import 'models.dart';
 
 class AnimeModel {
   final String banner;
   final String? category;
   final String? description;
   final List<String> genres;
+  final List<SeasonEntity>? seasons;
   final String id;
   final String name;
   final double note;
@@ -15,6 +17,7 @@ class AnimeModel {
     required this.category,
     required this.description,
     required this.genres,
+    required this.seasons,
     required this.id,
     required this.name,
     required this.note,
@@ -31,6 +34,9 @@ class AnimeModel {
       name: json['name'],
       note: double.parse(json['note'].toString().isEmpty ? '0.0' : json['note']),
       year: int.parse(json['year']),
+      seasons: json['seasons']
+                ?.map<SeasonEntity>((seasonJson) => SeasonModel.fromJson(seasonJson).toEntity())
+                ?.toList(),
     );
   }
 
@@ -44,6 +50,7 @@ class AnimeModel {
       name: name,
       note: note,
       year: year,
+      seasons: seasons,
     );
   }
 }
