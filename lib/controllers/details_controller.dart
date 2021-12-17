@@ -11,8 +11,8 @@ class DetailsController extends GetxController implements IDetailsController {
     required this.fetchAnimesService,
   });
 
-  Rx<Anime?> _anime = Rx<Anime?>(null);
-  RxBool _isLoading = false.obs;
+  final _anime = Rx<Anime?>(null);
+  final _isLoading = false.obs;
 
   bool get isLoading => _isLoading.value;
   set isLoading(bool value) => _isLoading.value = value;
