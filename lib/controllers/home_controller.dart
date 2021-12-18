@@ -13,9 +13,13 @@ class HomeController extends GetxController implements IHomeController {
 
   RxList<Anime> animes = <Anime>[].obs;
   final _filter = ''.obs;
+  final _isLoading = false.obs;
 
   String get filter => _filter.value;
   set filter(String value) => _filter.value = value;
+
+  bool get isLoading => _isLoading.value;
+  set isLoading(bool value) => _isLoading.value = value;
 
   @override
   void onInit() async {
@@ -27,11 +31,18 @@ class HomeController extends GetxController implements IHomeController {
   @override
   Future<void> fetchAllAnimes() async {
     if(animes.isNotEmpty) return;
-
-    animes.addAll(
-      await fetchAnimesService.fetchAllAnimes()
-    );
-
+    isLoading = true;
     update();
+
+    try {
+      animes.addAll(
+        await fetchAnimesService.fetchAllAnimes()
+      );
+    } finally {
+      isLoading = false;
+      update();
+    }
+
+
   }
 }
