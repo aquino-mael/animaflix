@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../app/app.dart';
-import '../../cross_cutting/cross_cutting.dart';
+import '../../cross_cutting/bindings/bindings.dart';
 import '../screens/screens.dart';
 
 class Animaflix extends StatelessWidget {
@@ -39,11 +39,6 @@ class Animaflix extends StatelessWidget {
           name: HomeScreen.routeName,
           page: () => HomeScreen(),
           binding: HomeBinding(),
-        ),
-        GetPage(
-          name: DetailsScreen.routeName,
-          page: () => DetailsScreen(),
-          binding: DetailsBinding(),
         ),
       ],
     );
