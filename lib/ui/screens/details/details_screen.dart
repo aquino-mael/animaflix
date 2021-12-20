@@ -3,12 +3,18 @@ import 'package:get/get.dart';
 
 import '../../../app/app.dart';
 import '../../../controllers/controllers.dart';
+import '../../../cross_cutting/bindings/bindings.dart';
 import '../../../domain/entities/entities.dart';
+import '../player/player.dart';
 
 class DetailsScreen extends GetView<DetailsController> {
   static const String routeName = '/details';
 
-  final String animeId = Get.arguments;
+  final String animeId;
+
+  DetailsScreen({
+    required this.animeId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +45,7 @@ class DetailsScreen extends GetView<DetailsController> {
                   animeName: controller.anime!.name,
                   animeYear: controller.anime!.year,
                   size: MediaQuery.of(context).size,
+                  animeNote: controller.anime!.note,
                 ),
               ),
               SliverToBoxAdapter(
@@ -175,7 +182,15 @@ class DetailsScreen extends GetView<DetailsController> {
 
   Widget _buildEpisodePreview(EpisodeEntity episody) {
     return ListTile(
-      onTap: () async {},
+      onTap: () async {
+        Get.to(
+          () => PlayerScreen(
+            episodeName: 'Episódio ${episody.number}',
+            episodeUrl: episody.players!.values.first
+          ),
+          binding: PlayerBinding(),
+        );
+      },
       leading: Stack(
         alignment: Alignment.center,
         children: [
@@ -191,6 +206,7 @@ class DetailsScreen extends GetView<DetailsController> {
               ),
               child: Icon(
                 Icons.play_arrow_rounded,
+                color: Colors.white,
               ),
             ),
         ],
@@ -208,6 +224,7 @@ class DetailsScreen extends GetView<DetailsController> {
 class DetailsPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   final String animeBanner;
   final String animeName;
+  final double animeNote;
   final int animeYear;
   final Size size;
 
@@ -216,6 +233,7 @@ class DetailsPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
     required this.animeBanner,
     required this.animeName,
     required this.animeYear,
+    required this.animeNote,
   });
 
   @override
@@ -273,7 +291,7 @@ class DetailsPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
           left: 16.0,
           child: CoverBanner(
             animeImage: animeBanner,
-            animeNote: 7.0,
+            animeNote: animeNote,
           ),
         ),
       ],
