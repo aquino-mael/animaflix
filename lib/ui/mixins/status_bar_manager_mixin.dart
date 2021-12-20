@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
 
 mixin StatusBarManager {
-  Future<void> hidenStatusBar() {
+  Future<void> hidenStatusBar() async {
     return SystemChrome.setEnabledSystemUIOverlays([]);
   }
 
-  Future<void> showStatusBar() {
+  Future<void> showStatusBar() async {
     return SystemChrome.setEnabledSystemUIOverlays([
       SystemUiOverlay.top,
       SystemUiOverlay.bottom,

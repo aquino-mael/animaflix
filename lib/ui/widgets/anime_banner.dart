@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../cross_cutting/bindings/bindings.dart';
 import '../screens/details/details_screen.dart';
 
 class AnimeBanner extends StatelessWidget {
@@ -23,7 +24,12 @@ class AnimeBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(DetailsScreen.routeName, arguments: animeId);
+        Get.to(
+          () => DetailsScreen(
+            animeId: animeId,
+          ),
+          binding: DetailsBinding(),
+        );
       },
       child: Card(
         color: Colors.transparent,
