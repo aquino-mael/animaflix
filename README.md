@@ -1,9 +1,9 @@
 # Animaflix
 
+<b>Animaflix vem como uma solução para você assistir seus animes gratuitamenta, confira o site que está no sobre deste repositório.<b/>
 
-Animaflix vem como uma solução para você assistir seus animes gratuitamenta, confira o site que está no sobre deste repositório.
 
-Algumas imagens do app
+## Algumas imagens do app
 
 ### Tela inicial:
 ![Tela inicial](https://github.com/aquino-mael/animaflix/tree/master/assets/application_images/home.png)
