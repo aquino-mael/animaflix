@@ -6,10 +6,10 @@
 ## Algumas imagens do app
 
 ### Tela inicial:
-![Tela inicial](https://github.com/aquino-mael/animaflix/blob/master/assets/application_images/home.png)
+<img src="https://github.com/aquino-mael/animaflix/blob/master/assets/application_images/home.png" width="350" title="Tela inicial"/>
 
 ### Tela de detalhes do anime:
-![Detalhes do anime](https://github.com/aquino-mael/animaflix/blob/master/assets/application_images/details_before_scroll.png)
+<img src="https://github.com/aquino-mael/animaflix/blob/master/assets/application_images/details_before_scroll.png" width="350" title="Detalhes do anime"/>
 
 ### Tela de detalhes do anime após scroll:
-![Detalhes do anime após realizar ação de scroll](https://github.com/aquino-mael/animaflix/blob/master/assets/application_images/details_after_scroll.png)
+<img src="https://github.com/aquino-mael/animaflix/blob/master/assets/application_images/details_after_scroll.png" width="350" title="Detalhes do anime após scroll"/>
